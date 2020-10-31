@@ -14,9 +14,14 @@ export class User {
     email: string;
 
     @Column("varchar", { length: 200 })
-    password: number;
+    password: string;
 
     @OneToMany((type) => Product, products => products.user)
     products: Product[];
+
+    constructor(props: Omit<User, "id" | "products">) {
+        Object.assign(this, props);
+    }
+    
 
 }
