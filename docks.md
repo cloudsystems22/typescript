@@ -3,6 +3,7 @@
 # Autenticação
 - Login
     - Email senha e rotornar tokem
+    https://www.youtube.com/watch?v=TjAXBLszCb0
 - Logout
     - Vai validar o tokem do usuario
 - Reset Password
