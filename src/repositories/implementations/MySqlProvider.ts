@@ -1,6 +1,6 @@
 import { User } from "../../entity/User";
 import { IUsersRepository } from "../IUsersRepository";
-import { getRepository, Repository } from "typeorm";
+import {createConnection, getRepository, Repository } from "typeorm";
 
 export class MysqlProvider implements IUsersRepository {
 
@@ -8,8 +8,8 @@ export class MysqlProvider implements IUsersRepository {
     const db = getRepository(User)
     return db.find();
   }
-  save(user: User): Promise<User> {
-    const db = getRepository(User)
+  async save(user: User): Promise<User> {
+    const db = await getRepository(User)
     return db.save(user);
   }
   async edit(id: number, user: User): Promise<User> {

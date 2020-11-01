@@ -4,6 +4,7 @@ class UsersController {
         return res.json({ rotaUsers: "Bem vindo rota usuario!"})
     }
     static created(req: Request, res: Response){
+        console.log(req.body);
         return res.json({ rotaUsers: "Cadastro Usuario"})
     }
     static updated(req: Request, res: Response){

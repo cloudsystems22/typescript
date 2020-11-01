@@ -7,4 +7,4 @@ const createUserCase = new CreateUserCase(mysqlProvider);
 
 const createUserController = new CreateUserController(createUserCase);
 
-export { createUserController };
+export { createUserCase, createUserController };
