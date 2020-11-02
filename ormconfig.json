@@ -1,9 +1,9 @@
 {
    "type": "mysql",
-   "host": "localhost",
+   "host": "mysql-container",
    "port": 3306,
    "username": "root",
-   "password": "Avanade01",
+   "password": "davidfico",
    "database": "fakebuscape",
    "synchronize": true,
    "logging": false,

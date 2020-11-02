@@ -16,7 +16,7 @@ export class MysqlProvider implements IUsersRepository {
     const db = getRepository(User)
     let userExits = await db.findOne(id);
 
-    userExits = { ...userExits, ...user };
+    //userExits = { ...userExits, ...user };
 
     return db.save(userExits);
   }

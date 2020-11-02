@@ -1,5 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, OneToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, OneToMany, BeforeInsert, BeforeUpdate} from "typeorm";
 import { Product } from "./Product";
+import bcrypt from "bcrypt";
 
 @Entity()
 export class User {
@@ -15,6 +16,12 @@ export class User {
 
     @Column("varchar", { length: 200 })
     password: string;
+
+    // @BeforeInsert()
+    // @BeforeUpdate()
+    // hashPassword(){
+    //     this.password = bcrypt.hashSync(this.password, 10);
+    // }
 
     @OneToMany((type) => Product, products => products.user)
     products: Product[];
