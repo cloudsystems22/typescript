@@ -1,24 +1,29 @@
 import { User } from "../../entity/User";
 import { IUsersRepository } from "../IUsersRepository";
-import {createConnection, getRepository, Repository } from "typeorm";
+import {getRepository, Repository, getManager } from "typeorm";
 
+//const entityManager = getManager();
 export class MysqlProvider implements IUsersRepository {
-
-  findAll(): Promise<User[]> {
-    const db = getRepository(User)
+  async findAll(): Promise<User[]> {
+    const db = await getRepository(User)
     return db.find();
   }
   async save(user: User): Promise<User> {
-    const db = await getRepository(User)
-    return db.save(user);
+    const entityManager = getManager();
+    const userExits = await entityManager.findOne(User, { where:{ email: user.email }})
+    if(userExits){
+      return null
+    }
+    return entityManager.save(user);
   }
   async edit(id: number, user: User): Promise<User> {
     const db = getRepository(User)
     let userExits = await db.findOne(id);
 
-    //userExits = { ...userExits, ...user };
+    userExits = { ...userExits, ...user };
 
     return db.save(userExits);
   }
+  
 }
 

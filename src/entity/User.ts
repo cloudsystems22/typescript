@@ -26,7 +26,7 @@ export class User {
     @OneToMany((type) => Product, products => products.user)
     products: Product[];
 
-    constructor(props: Omit<User, "id" | "products">) {
+    constructor(props: Omit<User, "id" | "name" | "products">) {
         Object.assign(this, props);
     }
     
